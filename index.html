@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <title>TD</title>
+<link rel="icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css">
+	
+</head>
+<body>
+    <div class="spacer"></div>
+    <div id="overlay">
+        <div id="endmenu">
+            <h1 id="message"></h1>
+            <div class="options">
+                <button type="button" id="back">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="bar"> 
+        <button type="button" id="openhelp">?</button>
+        <button type="button" id="openoptions">&#9881</button>
+    </div>
+    <div class="settings" id="settings">
+        <div>
+            <button type="button" id="sfx" class="enabled">
+                SOUND ON
+            </button>
+            <button type="button" id="music" class="enabled">
+                MUSIC ON
+            </button>
+
+            <button type="button" id="clear" class="enabled">
+                RESET
+            </button>
+            <button type="button" id="exit" class="enabled">
+                QUIT
+            </button>
+        </div>
+    </div>
+    <div class="help" id="help">
+        <p><b>Ajuda</b> <br> 
+            Construa torres usando "$" para defender a sua base dos inimigos, ganhe "$" ao eliminar inimigos, clique em uma torre para evoluir ou vender. <br>
+            Quanto estiver pronto, clique em "NEXT" para iniciar a próxima rodada.<br>
+            Posicione as torres estrategicamente ao lado do trajeto dos inimigos.<br>
+            Torres diferentes possuem vantagens e desvantagens dependendo do tipo de inimigo.<br>
+            <b>Torres:</b><br>
+            <b>Shooter:</b> velocidade média, alcance longo, dano físico médio;<br>
+            <b>Freezer:</b> velocidade baixa, alcance médio, dano elemental alto, congela inimigos;<br>
+            <b>Scorcher:</b> velocidade alta, alcance baixo, dano elemental baixo, dano físico baixo, reduz congelamento, reduz armadura permanentemente;
+
+        <br><br>
+        <b>Help</b> <br>
+            Build towers to defend your base from enemy units, obtain money by defeating enemies, click on a tower to upgrade or sell. <br>
+            When you're ready, click "NEXT" to begin.<br>
+            Place your towers strategically along the enemies' path.<br>
+            Different towers are strong against different types of enemy.<br>
+            <b>Towers:</b><br>
+            <b>Shooter:</b> medium rate of fire, large range, medium physical damage;<br>
+            <b>Freezer:</b> low rate of fire, medium range, medium elemental damage, slows down enemies;<br>
+            <b>Scorcher:</b> high rate of fire, low range, low elemental damage, low physical damage, reduces slow, permanently reduces armor;
+            
+            <p id="version">Version: alpha  0.1.0 </p>
+            Copyright RLWorks 2023
+        
+            </p>
+        </div>
+    <div class="mainscreen">
+        <div class="btn" id="btn">
+            <button type="button" id="arrow"><span class="towerun"><p>SHOOTER<br>$10</p></span></button>
+            <button type="button" id="ice"><span class="towerun"><p>FREEZER<br>$12</p></span></button>
+            <button type="button" id="fire"><span class="towerun"><p>SCORCHER<br>$20</p></span></button>
+            <button type="button" id="super"><span class="towerun"><p>SHREDDER<br>$150</p></span></button>
+            <button type="button" id="fast" class="fastn">>></button>
+            <button type="button" id="next" class="nexta">NEXT</button>
+        </div>
+
+
+        <div id="wrapper" class="wrapper">
+            <div class="infobox"> 
+                <p id="lives"></p>
+                <p id="wave">WAVE</p>
+                <p id="gold"></p>
+            </div>
+            <div id="levelselect" class="levelselect">
+            <div id="levelpagecontainer" class="levelpagecontainer">
+                <div id="lvlpage1" class="levelselectpage">
+                    <div class="header"><h1>BROWSER TD</h1></div>
+                    <div id="lvl1" class="levelbtn"><h3>Level 1</h3><img src="./assets/img/lvl1bg.png"><span id="lv1hs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl2" class="levelbtn"><h3>Level 2</h3><img src="./assets/img/lvl2bg.png"><span id="lv2hs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl3" class="levelbtn"><h3>Level 3</h3><img src="./assets/img/lvl3bgt.png"><span id="lv3hs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl4" class="levelbtn"><h3>Level 4</h3><img src="./assets/img/lvl4bg.png"><span id="lv4hs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl5" class="levelbtn"><h3>Level 5</h3><img src="./assets/img/lvl5bg.png"><span id="lv5hs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl6" class="levelbtn"><h3>Level 6</h3><img src="./assets/img/lvl6bg.png"><span id="lv6hs" class="lvbest">BEST: 0</span></div>
+                </div>
+                <div id="lvlpage2" class="levelselectpage">
+                    <div class="header"><h1>HARD MODE</h1></div>
+
+                    <div id="lvl1h" class="levelbtnh"><h3>Level 1</h3><img src="./assets/img/lvl1bg.png"><span id="lv1hhs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl2h" class="levelbtnh"><h3>Level 2</h3><img src="./assets/img/lvl2bg.png"><span id="lv2hhs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl3h" class="levelbtnh"><h3>Level 3</h3><img src="./assets/img/lvl3bgt.png"><span id="lv3hhs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl4h" class="levelbtnh"><h3>Level 4</h3><img src="./assets/img/lvl4bg.png"><span id="lv4hhs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl5h" class="levelbtnh"><h3>Level 5</h3><img src="./assets/img/lvl5bg.png"><span id="lv5hhs" class="lvbest">BEST: 0</span></div>
+                    <div id="lvl6h" class="levelbtnh"><h3>Level 6</h3><img src="./assets/img/lvl6bg.png"><span id="lv6hhs" class="lvbest">BEST: 0</span></div>
+                </div>
+                <div id="selectpage" class="selectpage"><h1>HARD ></h1></div>
+            </div>
+
+            </div>
+            <canvas id="game"></canvas>
+            <canvas id="gui"></canvas>
+            <div class="towermenu" id="towermenu"></div>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+<!--     <script src="assets/enemies.js"></script>
+    <script src="assets/towers.js"></script>
+    <script src="./assets/game.js"></script> -->
+</body>
+</html>

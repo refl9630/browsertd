@@ -1,0 +1,215 @@
+:root {
+    --bg_d: #5f5941;
+    --bg_l: aliceblue;
+    --primary: #aa9f74;
+    --primary_d: #787050;
+    --primary_h: #f3e3a5;
+    --secondary: #8cadc2;
+    --secondary_d: #6f8b9d;
+    --secondary_h: #adc7d8;
+    --hud_fontcolor: #ff8e65;
+    --menu_fontcolor: black;
+    --btn_fontcolor_d: #626262;
+    --btn_fontcolor_h: black;
+  }
+
+  body {
+	transform-origin: 0px 0px;
+}
+.wrapper {
+    display: block;
+    position: relative;
+    width: 640px;
+    height: 576px;
+    margin: 0;
+    padding: 0;
+    outline: var(--bg_d) solid 5px;
+}
+.btn {
+    display: none;
+    position: relative;
+    width: 640px;
+    background-color: var(--bg_d);
+    outline: var(--bg_d) solid 5px;
+}
+.help {
+    width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.btn button {
+    width: 100px;
+    height: 100%;
+    padding: 0;
+    display: block;
+    border-radius: 0;
+    font-family: sans-serif;
+    font-weight: bolder;
+    cursor: pointer;
+
+}
+#next {
+    position: absolute;
+    left: 540px;
+    border-width: 3px;
+}
+#fast {
+    position: absolute;
+    width: 50px;
+    left: 490px;
+    border-width: 3px;
+}
+.fastf {
+    background-color: var(--secondary_d);
+    border-color: var(--secondary_d);
+    
+    border-style: inset;
+}
+.fastn {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    border-style: outset;
+}
+.btn button span {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 80px;
+    border-width: 3px;
+}
+.towerun {
+    background-color: var(--primary_d);
+    border-color: var(--primary_d);
+    color: var(--btn_fontcolor_d);
+    border-style: inset;
+}
+.tower {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--btn_fontcolor_h);
+    border-style: outset;
+}
+.tower:hover {
+    background-color: var(--primary_h);
+}
+.selected {
+    background-color: var(--primary_h);
+    outline: 3px solid rgba(67, 46, 1, 0.718);
+    border-style: inset;
+}
+#next {
+    border-width: 3px;
+}
+.nextb {
+    background-color: var(--secondary_d);
+    border-style: inset;
+}
+.nexta {
+    background-color: var(--secondary);
+    border-style: outset;
+}
+.nexta:hover {
+    background-color: var(--secondary_h);
+}
+.infobox {
+    display: flex;
+    position: fixed;
+    color: var(--hud_fontcolor);
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: larger;
+    width: 620px;
+    height: 30px;
+    flex-direction: row;
+    justify-content:space-between;
+    background-color: rgba(89, 89, 89, 0.7);
+    padding: 0px 10px 5px 10px;
+    z-index: 2;
+}
+.infobox p {
+    line-height: 0;
+    
+}
+.levelselect {
+    height: 100%;
+    width: 100%;
+    position: sticky;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    z-index: 4;
+    background-color: var(--bg_l);
+}
+.levelbtn {
+    width: 180px;
+    height: 200px;
+    display: flex;
+    background-color: wheat;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid rgb(178, 184, 229);
+    margin: 5px;
+}
+.levelbtnh {
+    width: 180px;
+    height: 200px;
+    display: flex;
+    background-color: rgb(246, 153, 153);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid rgb(178, 184, 229);
+    margin: 5px;
+    visibility: hidden;
+}
+.levelbtn h3 {
+    margin: 0px;
+}
+.levelbtn img {
+    width: 160px;
+    height: 160px;
+}
+.levelbtnh h3 {
+    margin: 0px;
+}
+.levelbtnh img {
+    width: 160px;
+    height: 160px;
+}
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+#game {
+    position: absolute;
+    width: 640px;
+    height: 576px;
+    left: 0;
+    top: 0;
+}
+#gui {
+    position: absolute;
+    width: 640px;
+    height: 576px;
+    left: 0;
+    top: 0;
+}
+.towermenu {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 80px;
+}
+.towermenu button {
+    width: 100px;
+    height: 80px;
+}
