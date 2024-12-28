@@ -268,7 +268,7 @@ class acrobat extends enemyunit {
 // good hp, good spd, low armor, no def, mid res, shortcuts
 class rider extends enemyunit {
 	constructor() {
-		super(35, 3, 6, 0, 3, 35, true, 10, 3, true);
+		super(30, 3, 6, 0, 3, 35, true, 10, 2, true);
 		let spriteSheet = new Image()
 		spriteSheet.src = "assets/img/rider.png"
 		this.sprite = spriteSheet
