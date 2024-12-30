@@ -31,8 +31,22 @@ async function confirmImport() {
     const ca = await confirmImportAudio()
     //    console.log("au ok", ca)
     if (cs == true && cd == true && cl == true && cm == true && cc == true && ca == true) {
+        console.log("all ok");
+        
         mainMenu()
     }
+}
+
+//blurry overlay
+const overlayelement = document.getElementById('overlay')
+//let isBlurred = false
+function overlayOn () {
+	overlayelement.style.display = "block"
+//	isBlurred = true
+}
+function overlayOff () {
+	overlayelement.style.display = "none"
+//	isBlurred = false
 }
 
 main()

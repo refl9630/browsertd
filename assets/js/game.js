@@ -840,6 +840,7 @@ function showRate(stage, rate) {
 function endmenu(message) {
 	paused = true;
 	document.getElementById('overlay').style.display = "block";
+	document.getElementById('endmenu').style.display = "flex";
 	document.getElementById('message').innerHTML = message;
 }
 
@@ -869,6 +870,9 @@ let helpBox = document.getElementById('help')
 helpButton.addEventListener("click", helpScreen)
 
 function helpScreen() {
+	if (setupOpen) {
+		setupScreen()
+	}
 	switch (helpOpen) {
 		case false:
 			helpBox.style.visibility = "visible";
@@ -908,6 +912,9 @@ function mainUI() {
 }
 
 function setupScreen() {
+	if (helpOpen) {
+		helpScreen()
+	}
 	switch (setupOpen) {
 		case false:
 			setupBox.style.visibility = "visible";
@@ -959,11 +966,12 @@ function disableBGM() {
 			break;
 	}
 }
-function eraseProgress() {
-	const conf = window.confirm("DELETE ALL PROGRESS? \n Atenção: Isso apagará todo o progresso salvo.")
+async function eraseProgress() {
+//	const conf = window.confirm("DELETE ALL PROGRESS? \n Atenção: Isso apagará todo o progresso salvo.")
+	const conf = await popUp("DELETE ALL PROGRESS?", "selection")
 	if (conf) {
 		localStorage.clear()
-		alert("Erased")
+//		alert("Erased")
 		window.location.reload()
 	}
 }
