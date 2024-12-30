@@ -676,6 +676,7 @@ function gameOver(lives) {
 	let scoreid
 	updateScore(myGold) 
 	let endmsg = ""
+	let hsmsg =""
 	switch (st) {
 		case 1:
 			currentrate = lvl1rate
@@ -757,21 +758,22 @@ function gameOver(lives) {
 	if (highscore == null) {
 		highscore = 0
 	}
+
 	switch (lives) {
 		case 10:
 		case 9:
 			rt = 3
 			score = score * 2 * 10
-			endmsg += 'YOU WIN! ★★★'
-			endmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
+			endmsg += '★★★'
+			hsmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
 			break;
 		case 8:
 		case 7:
 		case 6:
 			rt = 2
 			score = score * 1.5 * 10
-			endmsg += 'YOU WIN! ★★☆'
-			endmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
+			endmsg += '★★☆'
+			hsmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
 			break;
 		case 0:
 			rt = 0
@@ -781,21 +783,23 @@ function gameOver(lives) {
 		default:
 			rt = 1
 			score = score * 10
-			endmsg += 'YOU WIN! ★☆☆'
-			endmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
+			endmsg += '★☆☆'
+			hsmsg += "<br>" + score + "<p class=\"endhigh\">BEST: " + highscore + "</p>"
 			break;
 	}
 	if (currentrate < rt) {
 		localStorage.setItem(rateid, rt)
 	}
 	if (highscore < score) {
-		alert('HIGH SCORE')
-		localStorage.setItem(scoreid, score)
-	}
+		//		alert('HIGH SCORE')
+				hsmsg = "<br><p class=\"endhigh\">" + score + "<br>HIGH SCORE!</p>"
+				localStorage.setItem(scoreid, score)
+			}
+	endmsg += hsmsg
 	endmenu(endmsg)
-	document.getElementById('back').addEventListener('click', function () {
-		window.location.reload()
-	})
+//	document.getElementById('back').addEventListener('click', function () {
+//		window.location.reload()
+//	})
 }
 function showRate(stage, rate) {
 	let text = ""
@@ -837,11 +841,13 @@ function showRate(stage, rate) {
 	}
 	return text
 }
-function endmenu(message) {
+async function endmenu(message) {
 	paused = true;
-	document.getElementById('overlay').style.display = "block";
-	document.getElementById('endmenu').style.display = "flex";
-	document.getElementById('message').innerHTML = message;
+	const conf = await popUp(message, "alert")
+	window.location.reload()
+//	document.getElementById('overlay').style.display = "block";
+//	document.getElementById('endmenu').style.display = "flex";
+//	document.getElementById('message').innerHTML = message;
 }
 
 const ff = document.getElementById('fast');
