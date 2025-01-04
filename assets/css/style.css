@@ -1,4 +1,3 @@
-@import url(overlay.css);
 :root {
     --bg_d: #5f5941;
     --bg_l: aliceblue;
@@ -12,13 +11,205 @@
     --menu_fontcolor: black;
     --btn_fontcolor_d: #626262;
     --btn_fontcolor_h: black;
-  }
-
-  body {
-	transform-origin: 0px 0px;
 }
+
+@media (orientation: landscape) {
+    body {
+        margin-left: 10vmax !important;
+    }
+    .mainscreen {
+        display: flex;
+        
+    }
+
+    .btn {
+        flex-direction: column;
+        width: 110px;
+        height: 576px;
+        position: absolute;
+    }
+
+    .help {
+        left: 110px;
+    }
+
+    .settings {
+        left: 110px;
+    }
+
+    .wrapper {
+        left: 110px;
+    }
+
+    .bar {
+        width: 750px;
+    }
+
+    #fast {
+        height: 50px;
+    }
+
+    .btn button {
+        width: 100%;
+        height: 110px;
+    }
+
+    .bar {
+        height: 30px;
+    }
+
+    #overlay {
+        width: 750px;
+        height: 610px;
+    }
+    .selectpage {
+        bottom: 0;
+    }
+}
+
+@media (orientation: portrait) {
+    body {
+        margin-top: 10dvh !important;
+    }
+
+    .mainscreen {
+        display: grid;
+        grid-template-areas: 'wrapper'
+            'buttons';
+        grid-template-rows: 576px 110px;
+    }
+
+    .btn {
+        flex-direction: row;
+        width: 640px;
+        height: 110px;
+        position: relative;
+    }
+
+    .wrapper {
+        grid-area: wrapper;
+    }
+
+    .bar {
+        width: 640px;
+    }
+
+    #fast {
+        height: 110px;
+        width: 90px;
+    }
+
+    .btn button {
+        width: 110px;
+        height: 100%;
+    }
+
+    .bar {
+        height: 50px;
+    }
+
+    #overlay {
+        width: 100%;
+        height: 750px;
+    }
+    .selectpage {
+        top: 540px;
+    }
+}
+
+body {
+    transform-origin: 0px 0px;
+    margin: 0px;
+    background-color: var(--primary_d);
+    overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* top bar */
+.bar {
+    background-color: var(--primary_d);
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.bar button {
+    height: 100%;
+    aspect-ratio: 1.5 / 1;
+    border: 1px solid var(--bg_d);
+    z-index: 4;
+    background-color: var(--bg_l);
+    font-weight: bold;
+    font-size: large;
+    color: black;
+}
+#openhelp:hover {
+    background-color: var(--primary);
+    color: white;
+}
+#openoptions:hover {
+    background-color: var(--primary);
+    color: white;
+}
+.helpclose {
+    background-color: var(--bg_d);
+    color: white;
+}
+
+/* desktop version only */
+#exit:hover {
+    background-color: red;
+    color: white;
+}
+
+/*help screen */
+.help {
+    position: fixed;
+    visibility: hidden;
+    z-index: 7;
+    background-color: white;
+    width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* setup menu */
+.settings {
+    position: fixed;
+    visibility: hidden;
+    z-index: 7;
+    height: 576px;
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+.settings div {
+    width: 250px;
+}
+.settings div button {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 250px;
+    margin-bottom: 20px;
+    height: 60px;
+    font-size: 40px;
+    font-weight: normal;
+}
+.enabled {
+    background-color: var(--secondary);
+}
+.disabled {
+    background-color: var(--secondary_d);
+}
+
+/*main container*/
 .wrapper {
-    display: block;
     position: relative;
     width: 640px;
     height: 576px;
@@ -26,66 +217,40 @@
     padding: 0;
     outline: var(--bg_d) solid 5px;
 }
+
+/* action menu */
+/* pick tower */
 .btn {
     display: none;
-    position: relative;
-    width: 640px;
+    grid-area: buttons;
+    font-weight: bold;
     background-color: var(--bg_d);
     outline: var(--bg_d) solid 5px;
 }
-.help {
-    width: 640px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 .btn button {
-    width: 100px;
-    height: 100%;
     padding: 0;
     display: block;
     border-radius: 0;
+    border: none;
     font-family: sans-serif;
     font-weight: bolder;
     cursor: pointer;
-
-}
-#next {
-    position: absolute;
-    left: 540px;
-    border-width: 3px;
-}
-#fast {
-    position: absolute;
-    width: 50px;
-    left: 490px;
-    border-width: 3px;
-}
-.fastf {
-    background-color: var(--secondary_d);
-    border-color: var(--secondary_d);
-    
-    border-style: inset;
-}
-.fastn {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-    border-style: outset;
+    background-color: var(--bg_d);
 }
 .btn button span {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: auto;
-    height: 80px;
-    border-width: 3px;
+    height: 100px;
+    border-width: 5px;
 }
+/* unnafordable */
 .towerun {
-    background-color: var(--primary_d);
-    border-color: var(--primary_d);
     color: var(--btn_fontcolor_d);
     border-style: inset;
 }
 .tower {
-    background-color: var(--primary);
-    border-color: var(--primary);
     color: var(--btn_fontcolor_h);
     border-style: outset;
 }
@@ -97,20 +262,96 @@
     outline: 3px solid rgba(67, 46, 1, 0.718);
     border-style: inset;
 }
+/* selectable */
+#arrow .tower {
+    background-color: rgba(220, 240, 0, 0.5);
+}
+#ice .tower {
+    background-color: rgba(0, 50, 240, 0.5);
+}
+#fire .tower {
+    background-color: rgba(240, 50, 0, 0.5);
+}
+#super .tower {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--bg_l);
+}
+/* unnafordable */
+#arrow .towerun {
+    background-color: rgba(110, 120, 0, 0.4);
+}
+#ice .towerun {
+    background-color: rgba(0, 25, 120, 0.4);
+}
+#fire .towerun {
+    background-color: rgba(120, 25, 0, 0.4);
+}
+#super .towerun {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+/* deploying */
+#arrow .selected {
+    background-color: rgba(220, 240, 0, 0.8);
+}
+#ice .selected {
+    background-color: rgba(0, 50, 240, 0.8);
+}
+#fire .selected {
+    background-color: rgba(240, 50, 0, .8);
+}
+#super .selected {
+    background-color: rgba(0, 0, 0, .9);
+    color: var(--bg_l);
+}
+
+/* next and ff */
 #next {
-    border-width: 3px;
+    background-color: var(--secondary);
+    position: relative;
+    border: 3px outset var(--secondary);
+    height: 110px;
+}
+#fast {
+    background-color: var(--secondary);
+    position: relative;
+    margin-top: auto;
+    margin-left: auto;
+    border: 3px outset var(--secondary);
+}
+.fastf {
+    background-color: var(--secondary_d) !important;
+    border: 3px inset var(--secondary_d) !important;
+}
+.fastff {
+    color: white !important;
+    font-weight: bolder;
+    background-color: var(--secondary_d) !important;
+    border: 3px inset var(--secondary_d) !important;
+    text-shadow: 2px 1px 2px var(--btn_fontcolor_d) !important;
+}
+.fastn {
+    background-color: var(--secondary) !important;
+    border: 3px outset var(--secondary) !important;
+}
+@keyframes flash {
+    0%   {background-color: rgb(255, 255, 255);}
+    50%  {background-color: var(--secondary);}
+    100% {background-color: rgb(255, 255, 255);}
 }
 .nextb {
-    background-color: var(--secondary_d);
-    border-style: inset;
+    background-color: var(--secondary_d) !important;
+    border: 3px inset var(--secondary_d) !important;
 }
 .nexta {
     background-color: var(--secondary);
-    border-style: outset;
+    border: 3px outset var(--secondary) !important;
+    animation: flash 2s infinite;
 }
 .nexta:hover {
-    background-color: var(--secondary_h);
+    background-color: var(--secondary_h) !important;
 }
+
+/* in-game info */
 .infobox {
     display: flex;
     position: fixed;
@@ -121,27 +362,109 @@
     width: 620px;
     height: 30px;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     background-color: rgba(89, 89, 89, 0.7);
     padding: 0px 10px 5px 10px;
     z-index: 2;
 }
 .infobox p {
     line-height: 0;
-    
+}
+
+/* game canvas */
+/* game bg and sprites */
+#game {
+    position: absolute;
+    width: 640px;
+    height: 576px;
+    left: 0;
+    top: 0;
+}
+/* game gui */
+#gui {
+    position: absolute;
+    width: 640px;
+    height: 576px;
+    left: 0;
+    top: 0;
+}
+
+/* sell/upgrade menu */
+.towermenu {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    min-height: 100px;
+    border-radius: 5px;
+}
+.towermenu button {
+    min-width: 120px;
+    min-height: 100px;
+    border: 1px solid var(--bg_d);
+    z-index: 4;
+    background-color: var(--primary);
+    font-size: x-large;
+    font-weight: bolder;
+    color: black;
+}
+.towermenu button:hover {
+    background-color: var(--bg_d);
+    color: white;
+}
+
+/* title/levelselect screen */
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    color: rgb(49, 0, 0);
+    text-shadow: rgb(255, 0, 0) .5px .5px 2px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .levelselect {
-    height: 100%;
+    height: 576px;
     width: 100%;
     position: sticky;
-    display:flex;
+    display: block;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+    overflow: hidden;
     z-index: 4;
     background-color: var(--bg_l);
+}
+.levelpagecontainer {
+    height: 576px;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+    z-index: 4;
+    /* background-color: var(--bg_l); */
+    animation-duration: 0.5s;
+}
+.levelselectpage {
+    height: 100%;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    z-index: 4;
+    /* background-color: var(--bg_l); */
 }
 .levelbtn {
     width: 180px;
@@ -151,7 +474,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid rgb(178, 184, 229);
     margin: 5px;
 }
@@ -163,7 +486,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid rgb(178, 184, 229);
     margin: 5px;
     visibility: hidden;
@@ -182,35 +505,90 @@
     width: 160px;
     height: 160px;
 }
-.header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+.lvbest {
+    display: none;
+    align-self:flex-end;
+    flex-direction: row;
 }
-#game {
-    position: absolute;
-    width: 640px;
-    height: 576px;
-    left: 0;
-    top: 0;
-}
-#gui {
-    position: absolute;
-    width: 640px;
-    height: 576px;
-    left: 0;
-    top: 0;
-}
-.towermenu {
+
+/* level select page button */
+.selectpage {
+    z-index: 5;
+    position: fixed;
     visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    height: 80px;
 }
-.towermenu button {
-    width: 100px;
-    height: 80px;
+.selectpage h1 {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+    width: 300px;
+    text-align: center;
+}
+
+/* level select page animation */
+@keyframes toLeft {
+    from {
+        transform: translateX(640px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes toRight {
+    from {
+        transform: translateX(-640px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+
+
+/* overlay menu */
+#overlay {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    width: 100vw;
+    box-sizing:inherit ;
+    z-index: 8;
+    cursor: pointer;
+    text-align: center;
+}
+
+#endmenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    background-color: var(--primary_d);
+    border-radius: 4px;
+    border: black solid 2px;
+    color: rgb(255, 238, 0);
+    text-shadow: black 1px 2px 3px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    z-index: 7;
+}
+#endmenu button {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 250px;
+    margin-bottom: 20px;
+    height: 60px;
+    font-size: 40px;
+    font-weight: normal;
+}
+.endhigh {
+    font-size: 20px;
+    color: rgb(138, 129, 0);
 }

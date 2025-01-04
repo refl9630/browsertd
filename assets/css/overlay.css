@@ -1,7 +1,7 @@
-#overlay {
+/* #overlay {
     position: fixed; 
     display: none; 
-    width: 100%; 
+    width: inherit; 
     height: 100dvh; 
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
     backdrop-filter: blur(5px);
     z-index: 8; 
     cursor: pointer; 
-  }
+  } */
   #pop{
     position: absolute;
     visibility: hidden;
@@ -34,7 +34,6 @@
   }
 #overlay div {
 	width: 95%;
-	max-width: 500px;
 	justify-content: space-evenly;
 	align-content: space-around;
 	display: flex;

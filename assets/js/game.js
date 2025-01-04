@@ -211,7 +211,9 @@ function startNext() {
 			alert("Selecione uma torre abaixo e a posicione antes de iniciar a rodada.")
 			return;
 		}
+		if (SFXenabled == true) {
 		music.horn.play()
+		}
 		fadeOutMusic()
 		deployCooldown = 15
 		deployCount = 0
