@@ -4,7 +4,7 @@ const deployed = []
 const myTowers = []
 const blocked = []
 const Tick = {
-	ms: 50,
+	ms: 40,
 	currentSpeed: 0,
 	TPS: 1000 / this.ms,
 	duration() {
@@ -22,10 +22,10 @@ const Tick = {
 		const ff = document.getElementById('fast')
 		const c = this.currentSpeed
 		let styles = ['fastn','fastf','fastff']
+		let TXT = ['>>','>>','>>>']
 		ff.setAttribute('class', styles[c])
-		if (c == 2) {
-		ff.innerText = ">>>"
-		}
+
+		ff.innerText = TXT[c]
 	},
 
 
@@ -63,6 +63,7 @@ let rubbleSprite;
 
 //game update logic
 function gameLoop() {
+	let td = 0
 	if (!paused) {
 		const t1 = new Date()
 		updateStage()
@@ -71,12 +72,12 @@ function gameLoop() {
 			targetEnemies()
 		}
 		const t2 = new Date()
-		let td = t2 - t1
+		td = t2 - t1
 		if (td > 10) {
-//			console.log(td);
+			console.log(td);
 		}
 	}
-	setTimeout(gameLoop, Tick.duration())
+	setTimeout(gameLoop, (Tick.duration()-td))
 }
 function updateStage() {
 //	ctx.clearRect(0, 0, canvas.width, canvas.height)

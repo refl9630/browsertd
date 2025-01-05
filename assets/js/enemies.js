@@ -51,20 +51,20 @@ class enemyunit {
 		this.skill = skill
 	}
 	movement() {
-		let acc = this.spd / (2 * 50)
+		let acc = this.spd
 		if (this.effect == "slow") {
 			if (this.slcount > 120) {
 				acc = 0;
 			}
 			else {
-				acc = (this.spd * 0.50) / (2 * 50)
+				acc = (this.spd * 0.50)
 			}
 			this.slcount -= 1
 			if (this.slcount <= 0) {
 				this.effect = "none"
 			}
 		}
-		this.walked += acc
+		this.walked += acc * .01
 		if (this.walked >= 1) {
 			this.walked = 0
 			this.pathswalked += 1;

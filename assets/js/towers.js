@@ -10,7 +10,7 @@ class tower {
         this.facing = 0
     }
     target() {
-        let reach = (this.range * tileSize) + 32;
+        let reach = (this.range * tileSize) + (tileSize*.5);
         let distX;
         let distY;
         if (this.cooldown < 1) {
@@ -176,7 +176,7 @@ class tower {
         tmenu.style.visibility = "visible"
         let xp = findTilePosition(hovering).x;
         let yp = findTilePosition(hovering).y;
-        let offx = 64;
+        let offx = tileSize;
         let offy = 0;
         if (xp > canvas.width - (3 * tileSize)) {
             offx = (-200)
@@ -305,7 +305,7 @@ const towerStats = {
         pdmg: [4, 5, 7],
         sdmg: [0, 0, 0],
         sprite3d: ["assets/img/st1_4b2_64.png", "assets/img/st2_4b2_64.png", "assets/img/st3_4b2_64.png"],
-        price: [10, 25, 150]
+        price: [10, 25, 250]
     },
     "freezer": {
         range: [1.5, 1.8, 2],
@@ -313,7 +313,7 @@ const towerStats = {
         pdmg: [0, 1, 2],
         sdmg: [4, 6, 8],
         sprite3d: ["assets/img/fr1_4b2_64.png", "assets/img/fr2_4b2_64.png", "assets/img/fr3_4b2_64.png"],
-        price: [12, 30, 170]
+        price: [12, 30, 350]
     },
     "scorcher": {
         range: [1.3, 1.8, 2],
@@ -321,7 +321,7 @@ const towerStats = {
         pdmg: [1, 2, 2],
         sdmg: [1, 3, 4],
         sprite3d: ["assets/img/sc1_4b2_64.png", "assets/img/sc2_4b2_64.png", "assets/img/sc3_4b2_64.png"],
-        price: [20, 40, 130],
+        price: [20, 40, 200],
     },
     "shredder": {
         range: [2.5, 3, 3.5],
