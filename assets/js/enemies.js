@@ -318,7 +318,6 @@ class transport extends enemyunit {
 	activateTrojan() {
 		const tileprog = this.pathswalked
 		const partprog = this.walked
-		let timer = 15 * tickLength
 		for (let i = 0; i < this.trapwave.length; i++) {
 			const tunit = this.trapwave[i];
 			const delay = i * 2

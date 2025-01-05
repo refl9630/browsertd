@@ -3,6 +3,34 @@ const tileObjects = []
 const deployed = []
 const myTowers = []
 const blocked = []
+const Tick = {
+	ms: 50,
+	currentSpeed: 0,
+	TPS: 1000 / this.ms,
+	duration() {
+		return this.ms
+	},
+	changeSpeed() {
+		const speeds = [40, 20, 10]
+		const nxt = (this.currentSpeed+1) % 3
+		playSFX('click', 0);
+		this.ms = speeds[nxt]
+		this.currentSpeed = nxt
+		this.ffButton() 
+	},
+	ffButton () {
+		const ff = document.getElementById('fast')
+		const c = this.currentSpeed
+		let styles = ['fastn','fastf','fastff']
+		ff.setAttribute('class', styles[c])
+		if (c == 2) {
+		ff.innerText = ">>>"
+		}
+	},
+
+
+}
+
 
 let paused = true
 let wave = []
@@ -10,9 +38,7 @@ let myLives = 10
 let myGold = 0
 let deployingtower = false
 let hovering;
-let tickLength = 20;
-let tickCount = 0;
-let TPS = 1000 / tickLength;
+let tickCount = 0
 let allDeployed = false
 let activeWave = false
 let deployCount = 0
@@ -50,7 +76,7 @@ function gameLoop() {
 //			console.log(td);
 		}
 	}
-	setTimeout(gameLoop, tickLength)
+	setTimeout(gameLoop, Tick.duration())
 }
 function updateStage() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -852,26 +878,6 @@ async function endmenu(message) {
 //	document.getElementById('message').innerHTML = message;
 }
 
-const ff = document.getElementById('fast');
-
-function fastForward() {
-	playSFX('click', 0);
-	if (tickLength == 20) {
-		ff.setAttribute('class', 'fastf')
-		tickLength = 10
-	}
-	else if (tickLength == 10) {
-		ff.setAttribute('class', 'fastff')
-		ff.innerText = ">>>"
-		tickLength = 5
-	}
-	else if (tickLength == 5) {
-		ff.setAttribute('class', 'fastn')
-		ff.innerText = ">>"
-		tickLength = 20
-	}
-}
-
 let helpOpen = false;
 let helpButton = document.getElementById('openhelp')
 let helpBox = document.getElementById('help')
@@ -917,6 +923,9 @@ function mainUI() {
 	document.getElementById('fast').addEventListener('click', fastForward);
 	document.getElementById('next').addEventListener('click', startNext);
 	paused = false
+}
+function fastForward () {
+	Tick.changeSpeed()
 }
 
 function setupScreen() {
@@ -998,19 +1007,19 @@ function zoom() {
 	let cs
 	//	console.log(vw, vh);
 	if (vw < vh) {
-		console.log('portrait');
+//		console.log('portrait');
 
 		ds = 640;
 		cs = vw
 		zoomlevel = cs / ds;
 	}
 	else {
-		console.log('landscape');
+//		console.log('landscape');
 		ds = vh
 		cs = 610
 		zoomlevel = ds / cs;
 	}
-	console.log(zoomlevel);
+//	console.log(zoomlevel);
 	document.body.style.MozTransform = 'scale(' + zoomlevel + ')';
 	document.body.style.WebkitTransform = 'scale(' + zoomlevel + ')';
 }

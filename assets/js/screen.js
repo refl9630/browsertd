@@ -126,11 +126,11 @@ function drawProjectile(from, dist, sprite, width, facing) {
 	const d = dist
 	const r = facing * 128
 	const s = sprite
-	for (let i = 0; i < 5; i++) {
-		let x = d.deltaX * (0.2 * i)
-		let y = d.deltaY * (0.2 * i)
+	for (let i = 0; i < 10; i++) {
+		let x = d.deltaX * (0.1 * i)
+		let y = d.deltaY * (0.1 * i)
 		//        drawSprite((from.x+(deltaX*i)), (from.y+(deltaY*i)), width, width)
-		setTimeout(function () { dirSprite(s, r, (o.x + x), (o.y + y), w, w) }, (tickLength * i * .5))
+		setTimeout(function () { dirSprite(s, r, (o.x + x), (o.y + y), w, w) }, (Tick.ms * i * .1))
 	}
 }
 
@@ -169,7 +169,7 @@ function deathAnimation(position) {
 	let y = position.y
 	let sprite = gsprite
 	for (let i = 0; i < 30; i++) {
-		let timer = i * tickLength
+		let timer = i * 20
 		setTimeout(function () { drawSprite(x, y - i, 40, 40, sprite) }, timer)
 	}
 }
@@ -179,7 +179,7 @@ function drawBlast (x, y, r) {
 	let size = tileSize * r * 2
 	let sprite = bsprite
 	for (let i = 0; i < 30; i++) {
-		let timer = i * tickLength
+		let timer = i * 20
 		setTimeout(function () { drawSprite(x, y - i, size, size, sprite) }, timer)
 	}
 }
