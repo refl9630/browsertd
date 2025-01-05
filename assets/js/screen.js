@@ -2,6 +2,9 @@
 //game screen data
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext("2d");
+//buffered screen 
+const offscreen = new OffscreenCanvas(640, 576);
+const pre = offscreen.getContext("2d");
 //gui screen data
 const canvasgui = document.getElementById('gui');
 const gui = canvasgui.getContext("2d");
@@ -20,6 +23,11 @@ const gridX = canvas.width / tileSize;
 const gridY = canvas.height / tileSize;
 let autoclose
 
+function render () {
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
+	ctx.drawImage(offscreen, 0, 0);
+	pre.clearRect(0, 0, canvas.width, canvas.height)
+}
 
 class spriteSheet {
 	constructor (src, spritesize, sheetgrid) {
@@ -130,25 +138,25 @@ function drawProjectile(from, dist, sprite, width, facing) {
 		let x = d.deltaX * (0.1 * i)
 		let y = d.deltaY * (0.1 * i)
 		//        drawSprite((from.x+(deltaX*i)), (from.y+(deltaY*i)), width, width)
-		setTimeout(function () { dirSprite(s, r, (o.x + x), (o.y + y), w, w) }, (Tick.ms * i * .1))
+		setTimeout(function () { dirSprite(s, r, (o.x + x), (o.y + y), w, w) }, (Tick.ms * i * .2))
 	}
 }
 
 function drawSprite(x, y, w, h, char) {
 	let sprite = char
-	ctx.drawImage(sprite, x - (w * 0.5), y - (h * 0.5), w, h)
+	pre.drawImage(sprite, x - (w * 0.5), y - (h * 0.5), w, h)
 }
 function dirSprite(char, r, x, y, w, h) {
 	let sprite = char
-	ctx.drawImage(sprite, r, 0, 128, 128, x - (w * 0.5), y - (h * 0.5), w, h)
+	pre.drawImage(sprite, r, 0, 128, 128, x - (w * 0.5), y - (h * 0.5), w, h)
 }
 function rotatedSprite(img, x, y, width, height, deg) {
-	ctx.save()
+	pre.save()
 	var rad = deg * Math.PI / 180;
-	ctx.translate(x + width / 2, y + height / 2);
-	ctx.rotate(rad);
-	ctx.drawImage(img, width / 2 * (-1), height / 2 * (-1), width, height);
-	ctx.restore();
+	pre.translate(x + width / 2, y + height / 2);
+	pre.rotate(rad);
+	pre.drawImage(img, width / 2 * (-1), height / 2 * (-1), width, height);
+	pre.restore();
 }
 function drawSheetSprite (sheet, x, y, w, h, spritenum) {
 	let sprite = sheet.image 
@@ -156,7 +164,7 @@ function drawSheetSprite (sheet, x, y, w, h, spritenum) {
 	let sx = originOffset.x
 	let sy = originOffset.y
 	let sd = sheet.spritesize
-	ctx.drawImage(sprite, sx, sy, sd, sd, x, y, w, h)
+	pre.drawImage(sprite, sx, sy, sd, sd, x, y, w, h)
 }
 
 

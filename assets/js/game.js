@@ -79,7 +79,8 @@ function gameLoop() {
 	setTimeout(gameLoop, Tick.duration())
 }
 function updateStage() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height)
+//	ctx.clearRect(0, 0, canvas.width, canvas.height)
+	render()
 	gui.clearRect(0, 0, canvas.width, canvas.height)
 	let h;
 // draw towers
