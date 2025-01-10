@@ -111,7 +111,7 @@ class enemyunit {
 		let initial;
 		let x;
 		let y;
-		let offset = Math.round(tileSize * this.walked)
+		let offset = Math.floor(tileSize * this.walked)
 		let d
 		if (this.pathswalked >= this.path.length) {
 			initial = tileObjects[this.path[this.path.length - 1]].center

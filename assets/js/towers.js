@@ -40,8 +40,9 @@ class tower {
         let cooldown = Math.ceil(50 / this.rate)
         let center = findTileCenter(this.coord);
         this.facing = this.facingDirection(dist.deltaX, dist.deltaY, this.range)
-
-        drawProjectile(center, dist, this.projectile.image, this.projectile.width, this.facing)
+//        console.log(this.facing);
+        
+        drawProjectile(center, dist, this.projectile.image, this.projectile.width, Math.round(this.facing* 0.5))
     
         unit.damage(this.physical, this.special)
         this.cooldown = cooldown
@@ -53,22 +54,33 @@ class tower {
     }
     facingDirection(deltaX, deltaY) {
         // 0 = 0°, 1 = 45°, 2 = 90°, 3 = 135°, 4 = 180°, 5 = 225°, 6 = 270°, 7 = 315°
-        let cutoff = 0.25 * tileSize * this.range
+
+//        let angle = Math.trunc(Math.abs(((Math.atan2(deltaX, deltaY)*180)/ Math.PI) - 180));
+//        let angle = Math.trunc(Math.abs(((Math.atan2(deltaX, deltaY)*4) / Math.PI)- 4));
+        let angle = Math.round(Math.abs(((Math.atan2(deltaX, deltaY)*8) / Math.PI)- 8)) % 16;
+//        console.log(angle);
+        
+       return angle
+/*         let cutoff = 0.25 * tileSize * this.range
         let sX = Math.sign(deltaX)
         let sY = Math.sign(deltaY)
         if (Math.abs(deltaX) < cutoff) {
             switch (sY) {
                 case 1:
+                    console.log("down");
                     return 4;
                 case -1:
+                    console.log("up");
                     return 0;
             }
         }
         else if (Math.abs(deltaY) < cutoff) {
             switch (sX) {
                 case 1:
+                    console.log("right");
                     return 2;
                 case -1:
+                    console.log("left");
                     return 6;
             }
         }
@@ -89,7 +101,7 @@ class tower {
                         return 7;
                 }
             }
-        }
+        }  */
     }
     applyEffect(enemy) {
         let unit = deployed[enemy]
@@ -212,8 +224,8 @@ class shooter extends tower {
             width: 30
         }
         this.has3dsprite = true
-        let myimgsrc = "assets/img/st1_4b2_64.png"
-        let sheetGrid = [4, 2]
+        let myimgsrc = "assets/img/st1_64_4x4grid.png"
+        let sheetGrid = [4, 4]
         let mysheet = new spriteSheet(myimgsrc, 64, sheetGrid)
         this.sprite3d = mysheet
     }
@@ -237,8 +249,8 @@ class freezer extends tower {
             width: 40
         }
         this.has3dsprite = true
-        let myimgsrc = "assets/img/fr1_4b2_64.png"
-        let sheetGrid = [4, 2]
+        let myimgsrc = "assets/img/fr1_64_4x4grid.png"
+        let sheetGrid = [4, 4]
         let mysheet = new spriteSheet(myimgsrc, 64, sheetGrid)
         this.sprite3d = mysheet
     }
@@ -263,8 +275,8 @@ class scorcher extends tower {
             width: 45
         }
         this.has3dsprite = true
-        let myimgsrc = "assets/img/sc1_4b2_64.png"
-        let sheetGrid = [4, 2]
+        let myimgsrc = "assets/img/sc1_64_4x4grid.png"
+        let sheetGrid = [4, 4]
         let mysheet = new spriteSheet(myimgsrc, 64, sheetGrid)
         this.sprite3d = mysheet
     }
@@ -287,8 +299,8 @@ class shredder extends tower {
             width: 30
         }
         this.has3dsprite = true
-        let myimgsrc = "assets/img/sh1_4b2_64.png"
-        let sheetGrid = [4, 2]
+        let myimgsrc = "assets/img/sh1_64_4x4grid.png"
+        let sheetGrid = [4, 4]
         let mysheet = new spriteSheet(myimgsrc, 64, sheetGrid)
         this.sprite3d = mysheet
 
@@ -304,7 +316,7 @@ const towerStats = {
         rate: [3, 3, 4],
         pdmg: [4, 5, 7],
         sdmg: [0, 0, 0],
-        sprite3d: ["assets/img/st1_4b2_64.png", "assets/img/st2_4b2_64.png", "assets/img/st3_4b2_64.png"],
+        sprite3d: ["assets/img/st1_64_4x4grid.png", "assets/img/st2_64_4x4grid.png", "assets/img/st3_64_4x4grid.png"],
         price: [10, 25, 250]
     },
     "freezer": {
@@ -312,7 +324,7 @@ const towerStats = {
         rate: [1, 1.5, 2],
         pdmg: [0, 1, 2],
         sdmg: [4, 6, 8],
-        sprite3d: ["assets/img/fr1_4b2_64.png", "assets/img/fr2_4b2_64.png", "assets/img/fr3_4b2_64.png"],
+        sprite3d: ["assets/img/fr1_64_4x4grid.png", "assets/img/fr2_64_4x4grid.png", "assets/img/fr3_64_4x4grid.png"],
         price: [12, 30, 350]
     },
     "scorcher": {
@@ -320,7 +332,7 @@ const towerStats = {
         rate: [6, 7, 8],
         pdmg: [1, 2, 2],
         sdmg: [1, 3, 4],
-        sprite3d: ["assets/img/sc1_4b2_64.png", "assets/img/sc2_4b2_64.png", "assets/img/sc3_4b2_64.png"],
+        sprite3d: ["assets/img/sc1_64_4x4grid.png", "assets/img/sc2_64_4x4grid.png", "assets/img/sc3_64_4x4grid.png"],
         price: [20, 40, 200],
     },
     "shredder": {
@@ -328,7 +340,7 @@ const towerStats = {
         rate: [6, 6, 7],
         pdmg: [5, 8, 8],
         sdmg: [1, 4, 6],
-        sprite3d: ["assets/img/sh1_4b2_64.png", "assets/img/sh2_4b2_64.png", "assets/img/sh3_4b2_64.png"],
+        sprite3d: ["assets/img/sh1_64_4x4grid.png", "assets/img/sh2_64_4x4grid.png", "assets/img/sh3_64_4x4grid.png"],
         price: [150, 250, 600]
     },
 }

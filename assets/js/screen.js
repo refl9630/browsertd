@@ -161,7 +161,7 @@ function rotatedSprite(img, x, y, width, height, deg) {
 function drawSheetSprite (sheet, x, y, w, h, spritenum) {
 	let sprite = sheet.image 
 	let originOffset = sheet.spriteindex[spritenum]
-	let sx = originOffset.x
+	let sx = originOffset.	x
 	let sy = originOffset.y
 	let sd = sheet.spritesize
 	pre.drawImage(sprite, sx, sy, sd, sd, x, y, w, h)
