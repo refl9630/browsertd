@@ -31,7 +31,7 @@ class tower {
         else {
             this.cooldown -= 1
             if (this.cooldown > 60) {
-                this.facing = Math.floor(7 * Math.random())
+                this.facing = Math.floor(15 * Math.random())
             }
         }
     }
@@ -314,7 +314,7 @@ const towerStats = {
     "shooter": {
         range: [2, 2.5, 3],
         rate: [3, 3, 4],
-        pdmg: [4, 5, 7],
+        pdmg: [4, 5, 8],
         sdmg: [0, 0, 0],
         sprite3d: ["assets/img/st1_64_4x4grid.png", "assets/img/st2_64_4x4grid.png", "assets/img/st3_64_4x4grid.png"],
         price: [10, 25, 250]
@@ -330,7 +330,7 @@ const towerStats = {
     "scorcher": {
         range: [1.3, 1.8, 2],
         rate: [6, 7, 8],
-        pdmg: [1, 2, 2],
+        pdmg: [1, 2, 4],
         sdmg: [1, 3, 4],
         sprite3d: ["assets/img/sc1_64_4x4grid.png", "assets/img/sc2_64_4x4grid.png", "assets/img/sc3_64_4x4grid.png"],
         price: [20, 40, 200],
@@ -338,7 +338,7 @@ const towerStats = {
     "shredder": {
         range: [2.5, 3, 3.5],
         rate: [6, 6, 7],
-        pdmg: [5, 8, 8],
+        pdmg: [5, 8, 10],
         sdmg: [1, 4, 6],
         sprite3d: ["assets/img/sh1_64_4x4grid.png", "assets/img/sh2_64_4x4grid.png", "assets/img/sh3_64_4x4grid.png"],
         price: [150, 250, 600]
